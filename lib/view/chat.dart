@@ -19,12 +19,13 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     // variables
   TextEditingController message = TextEditingController();
+  List persons = [moi.uid, widget.correspondant.uid];
 
     // fonctions
 
       return StreamBuilder<QuerySnapshot>(
 
-      stream: FirebaseHelper().cloudMessages.snapshots(),
+      stream: FirebaseHelper().cloudMessages.where('sid', whereIn: persons).snapshots(),
       builder: (context,snap){
         if(snap.data == null){
           return Center(child: Text("Aucun message"),);
@@ -35,8 +36,8 @@ class _ChatState extends State<Chat> {
             itemCount: documents.length,
               itemBuilder: (context,index){
                 MyMessage messages = MyMessage.bdd(documents[index]);
+                if(persons.contains(messages.receiverId)) {
                 print(messages.content);
-                if((messages.receiverId == widget.correspondant.uid)) {
                   
                   return Card(
                     elevation: 5,
