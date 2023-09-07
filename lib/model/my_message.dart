@@ -26,7 +26,7 @@ class Message {
         'senderId': senderId,
         'receiverId': receiverId,
       });
-      print('Message envoyé!');
+      print('Message envoyé !');
     } catch (error) {
       print('Err : $error');
     }
