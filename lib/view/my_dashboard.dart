@@ -145,7 +145,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
     switch(indexPage) {
       case 0 : return ListPersonne(show:"all");
       case 1 : return ListPersonne(show:"fav");
-      case 2 : return MyMachineLearning(); // TODO: chat
+      case 2 : return Contacts(); // TODO: chat
       default: return Text("Erreur");
     }
   }
