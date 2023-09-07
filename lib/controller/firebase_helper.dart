@@ -9,6 +9,7 @@ import 'package:firstbd233/model/my_user.dart';
 class FirebaseHelper {
   final auth = FirebaseAuth.instance;
   final cloud_users = FirebaseFirestore.instance.collection("UTILISATEURS");
+  final cloudMessages = FirebaseFirestore.instance.collection("messages");
   final storage = FirebaseStorage.instance;
 
 
@@ -53,15 +54,14 @@ Future<MyUser> getUser(String uid) async {
     String url = await snapshot.ref.getDownloadURL();
     return url;
   }
-  Future<MyUser> sendMsg(String message, String sid, String rid) async {
+    Future sendMsg(String message, String sid, String rid) async {
     Map<String,dynamic> data = {
       "message":message,
       "sid":sid,
       "rid": rid,
       "date":DateTime.now()
     };
-    addUser(uid, data);
-    return getUser(uid);
+    return await cloudMessages.add(data);
   }
 
 }
