@@ -120,10 +120,6 @@ class _MyDashBoardState extends State<MyDashBoard> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: "Carte"
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Personnes"
           ),
@@ -132,8 +128,8 @@ class _MyDashBoardState extends State<MyDashBoard> {
             label: "Favoris"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.rocket),
-            label: "ML"
+            icon: Icon(Icons.chat),
+            label: "Chat"
           )
         ]
       ),
@@ -147,10 +143,9 @@ class _MyDashBoardState extends State<MyDashBoard> {
   }
   Widget bodyPage() {
     switch(indexPage) {
-      case 0 : return MyCarte();
-      case 1 : return ListPersonne(show:"all");
-      case 2 : return ListPersonne(show:"fav");
-      case 3 : return MyMachineLearning();
+      case 0 : return ListPersonne(show:"all");
+      case 1 : return ListPersonne(show:"fav");
+      case 2 : return MyMachineLearning(); // TODO: chat
       default: return Text("Erreur");
     }
   }
