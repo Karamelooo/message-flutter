@@ -53,4 +53,15 @@ Future<MyUser> getUser(String uid) async {
     String url = await snapshot.ref.getDownloadURL();
     return url;
   }
+  Future<MyUser> sendMsg(String message, String sid, String rid) async {
+    Map<String,dynamic> data = {
+      "message":message,
+      "sid":sid,
+      "rid": rid,
+      "date":DateTime.now()
+    };
+    addUser(uid, data);
+    return getUser(uid);
+  }
+
 }

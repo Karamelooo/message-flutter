@@ -45,8 +45,12 @@ class _ContactsState extends State<Contacts> {
                       ),
                       title: Text(users.fullName),
                       subtitle: Text(users.email),
-                      onTap: () {
-                       Chat(correspondant:users);
+                      onTap: () {  
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Chat(correspondant:users);
+                          }
+                        ));
                       }
                     ),
                   );
