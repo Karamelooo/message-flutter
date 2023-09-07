@@ -5,7 +5,7 @@ import 'package:firstbd233/model/my_user.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
-  final String correspondant;
+  final MyUser correspondant;
   const Chat({required this.correspondant, super.key});
 
   @override
@@ -17,7 +17,6 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     // fonctions
 
-  
-    return SizedBox.shrink();
+    return Text(widget.correspondant.prenom);
   }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firstbd233/constante/constant.dart';
 import 'package:firstbd233/controller/firebase_helper.dart';
 import 'package:firstbd233/model/my_user.dart';
+import 'package:firstbd233/view/chat.dart';
 import 'package:flutter/material.dart';
 
 class Contacts extends StatefulWidget {
@@ -14,11 +15,16 @@ class Contacts extends StatefulWidget {
 class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
+    // variables
+
+    List myFavoris = moi.favoris;
+
     // fonctions
 
   
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseHelper().cloud_users.snapshots(),
+
+      stream: FirebaseHelper().cloud_users.where(FieldPath.documentId, whereIn: myFavoris).snapshots(),
       builder: (context,snap){
         if(snap.data == null){
           return Center(child: Text("Aucun utilisateur"),);
@@ -29,7 +35,6 @@ class _ContactsState extends State<Contacts> {
             itemCount: documents.length,
               itemBuilder: (context,index){
                 MyUser users = MyUser.bdd(documents[index]);
-                if(users.uid != moi.uid && (widget.show == "all" || (widget.show == 'fav' && moi.favoris.contains(users.uid)))) {
                   return Card(
                     elevation: 5,
                     color: Colors.purple,
@@ -41,14 +46,10 @@ class _ContactsState extends State<Contacts> {
                       title: Text(users.fullName),
                       subtitle: Text(users.email),
                       onTap: () {
-                        Chat(users);
+                       Chat(correspondant:users);
                       }
                     ),
                   );
-                }
-                else {
-                  return SizedBox.shrink();
-                }
               }
             );
           }
