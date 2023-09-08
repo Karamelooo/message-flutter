@@ -249,10 +249,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  (position == 3)?Container():DotsIndicator(
+                  (position == 1)?Container():DotsIndicator(
 
                     position: position,
-                      dotsCount: 4
+                      dotsCount: 1
                   )
                 ],
               ),
