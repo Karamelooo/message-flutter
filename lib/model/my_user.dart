@@ -8,7 +8,6 @@ class MyUser {
   late String email;
   String? avatar;
   DateTime? birthday;
-  late Genre genre;
   late List<dynamic> favoris;
 
 
@@ -17,7 +16,6 @@ class MyUser {
     nom = "";
     prenom = "";
     email = "";
-    genre = Genre.autres;
     favoris = [];
   }
 

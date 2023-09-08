@@ -89,8 +89,6 @@ class _ChatMessageState extends State<ChatMessage> {
   }
 }
 
-
-
 class ChatScreenContent extends StatefulWidget {
     final MyUser correspondant;
   const ChatScreenContent({required this.correspondant, super.key});
@@ -111,16 +109,30 @@ class ChatScreenContent extends StatefulWidget {
     final chatModel = getMyMessages();
     chatModel.then((value) {
       if(count < value.length) {
-        
         setState(() {
-
         mesMess = value;
         count = value.length;
         });
       }
     })
     .catchError((error) {
-      
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title:const Text("L'application a rencontré une erreur"),
+            content:const Text("La conversation n'a pas pu être récupérée"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Ok")
+              )
+            ],
+          );
+        }
+      );
     });
     return Scaffold(
       appBar: AppBar(
@@ -185,6 +197,23 @@ class ChatScreenContent extends StatefulWidget {
       setState(() {});
     })
     .catchError((onError) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title:const Text("L'application a rencontré une erreur"),
+            content:const Text("Le message n'a pas pu s'envoyer"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Ok")
+              )
+            ],
+          );
+        }
+      );
     });
   }
 }
