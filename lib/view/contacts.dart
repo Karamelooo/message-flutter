@@ -48,7 +48,8 @@ class _ContactsState extends State<Contacts> {
                       onTap: () {  
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return Chat(correspondant:users);
+                            //return Chat(correspondant:users);
+                            return ChatApp(correspondant:users);
                           }
                         ));
                       }

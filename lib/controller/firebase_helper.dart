@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firstbd233/model/my_message.dart';
 import 'package:firstbd233/model/my_user.dart';
 
 class FirebaseHelper {
@@ -30,6 +31,14 @@ Future<MyUser> getUser(String uid) async {
   DocumentSnapshot snapshot = await cloud_users.doc(uid).get();
   return MyUser.bdd(snapshot);
 }
+
+Future<List<DocumentSnapshot>> getMessages(List<dynamic> persons) async {
+  QuerySnapshot querySnapshot = await FirebaseHelper()
+      .cloudMessages
+      .orderBy('date', descending: true)
+      .get();
+  return querySnapshot.docs;
+}
   //ajouter un utilisateur dans la base de donnée
   addUser(String uid,Map<String,dynamic>data ){
     cloud_users.doc(uid).set(data);
@@ -55,13 +64,16 @@ Future<MyUser> getUser(String uid) async {
     return url;
   }
     Future sendMsg(String message, String sid, String rid) async {
+      print(message);
+      print(sid);
+      print(rid);
     Map<String,dynamic> data = {
       "message":message,
       "sid":sid,
       "rid": rid,
       "date":DateTime.now()
     };
-    return await cloudMessages.add(data);
+    cloudMessages.add(data);
   }
 
 }
