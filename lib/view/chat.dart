@@ -33,12 +33,14 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ChatModel(),
-      child: ChatScreenContent(correspondant: widget.correspondant),
+    return MaterialApp(
+      home: Scaffold(
+        body: ChatScreenContent(correspondant: widget.correspondant),
+      ),
     );
   }
 }
+
 
 class ChatMessage extends StatefulWidget {
   final dynamic message;
@@ -107,16 +109,10 @@ class ChatScreenContent extends StatefulWidget {
   Widget build(BuildContext context) {
     getMyMessages() async {
       List<DocumentSnapshot> myMessages = await FirebaseHelper().getMessages();
-      //print(myMessages[1]['message']);
-      //print(myMessages.length);
       return myMessages;
     }
-    print(count);
     final chatModel = getMyMessages();
-    if(true) {
-      //print('test');
     chatModel.then((value) {
-      //print(value[0]['message']);
       if(count < value.length) {
         
         setState(() {
@@ -128,40 +124,31 @@ class ChatScreenContent extends StatefulWidget {
     })
     .catchError((error) {
       
-      });
-    }
-      //print('test');
-      if( true) {
-        //print(mesMess);
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(widget.correspondant.fullName),
+    });
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.correspondant.fullName),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              reverse: true,
+              itemCount: mesMess.length,
+              itemBuilder: (context, index) {
+                final message = mesMess[index];
+                return ChatMessage(message: message, correspondant: widget.correspondant);
+              },
+            ),
           ),
-          body: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView.builder(
-                  reverse: true,
-                  itemCount: mesMess.length,
-                  itemBuilder: (context, index) {
-                    final message = mesMess[index];
-                    return ChatMessage(message: message, correspondant: widget.correspondant);
-                  },
-                ),
-              ),
-              Divider(),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: _buildTextComposer(context),
-              ),
-            ],
+          Divider(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: _buildTextComposer(context),
           ),
-        );
-      }
-      else {
-        print('else');
-      return SizedBox.shrink();
-      }
+        ],
+      ),
+    );
   }
 
   Widget _buildTextComposer(BuildContext context) {
@@ -195,46 +182,12 @@ class ChatScreenContent extends StatefulWidget {
   }
 
   void _handleSubmitted(BuildContext context, String text) {
-                  //enregistrer dans la base de donnée
-                  print('test');
-                  print(text);
-              FirebaseHelper().sendMsg(text, moi.uid, widget.correspondant.uid)
-              .then((value) {
-                print('envoye');
-                setState(() {
-                  
-                });
-              })
-              .catchError((onError) {
-                print('erreur');
-                Text("error");
-              });
+    //enregistrer dans la base de données
+    FirebaseHelper().sendMsg(text, moi.uid, widget.correspondant.uid)
+    .then((value) {
+      setState(() {});
+    })
+    .catchError((onError) {
+    });
   }
-}
-
-class ChatModel extends ChangeNotifier {
-  List<Message> _messages = [
-    Message(
-      text: 'Bonjour',
-      isSentByMe: false,
-    ),
-    Message(
-      text: 'Bonjour',
-      isSentByMe: true,
-    ),
-  ];
-
-  List<Message> get messages => _messages;
-
-  void addMessage(Message message) {
-    _messages.insert(0, message);
-    notifyListeners();
-  }
-}
-
-class Message {
-  final String text;
-  final bool isSentByMe;
-
-  Message({required this.text, required this.isSentByMe});
 }
