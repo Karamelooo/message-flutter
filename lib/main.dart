@@ -11,7 +11,6 @@ import 'package:firstbd233/view/my_background.dart';
 import 'package:firstbd233/view/my_dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,28 +70,28 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (context) {
         if(Platform.isIOS){
           return CupertinoAlertDialog(
-            title: Text("Erreur"),
-            content: Text("Il y a une erreur de saisie"),
+            title: const Text("Erreur"),
+            content: const Text("Il y a une erreur de saisie"),
             actions: [
               TextButton
               (onPressed: () {
                 Navigator.pop(context);
               },
-               child: Text('Valider')
+               child: const Text('Valider')
                )
             ]
           );
         }
         else {
           return AlertDialog(
-            title: Text("Erreur"),
-            content: Text("Il y a une erreur de saisie"),
+            title: const Text("Erreur"),
+            content: const Text("Il y a une erreur de saisie"),
             actions: [
               TextButton
               (onPressed: () {
                 Navigator.pop(context);
               },
-               child: Text('Valider')
+               child: const Text('Valider')
                )
             ]
           );
@@ -105,23 +104,23 @@ class _MyHomePageState extends State<MyHomePage> {
     return SnackBar(
       backgroundColor: Colors.purple,
       duration: const Duration(minutes: 5),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))
 
         ),
 
 
-        content: Container(
+        content: SizedBox(
           height: MediaQuery.of(context).size.height * 0.75,
           child: Column(
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               TextField(
                 controller: prenom,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
 
                     hintText: "Entrer votre prénom",
                     border: OutlineInputBorder(
@@ -130,13 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               TextField(
                 controller: nom,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     hintText: "Entrer votre nom",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)
@@ -144,13 +143,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               TextField(
                 controller: email,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.mail),
+                    prefixIcon: const Icon(Icons.mail),
 
                     hintText: "Entrer votre adresse mail",
                     border: OutlineInputBorder(
@@ -159,14 +158,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               TextField(
                 controller: password,
                 obscureText: eyeOpen,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     suffixIcon: IconButton(
                       onPressed: (){
                         setState(() {
@@ -174,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
 
                       },
-                      icon: Icon(Icons.remove_red_eye),
+                      icon: const Icon(Icons.remove_red_eye),
                     ),
                     hintText: "Entrer votre mot de passe",
                     border: OutlineInputBorder(
@@ -183,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               ElevatedButton(
                   onPressed: (){
                     ScaffoldMessenger.of(context).clearSnackBars();
@@ -195,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return MyDashBoard();
+                          return const MyDashBoard();
                         }
                       ));
                     })
@@ -203,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       popUpError();
                     });
                   },
-                  child: Text("Enregistrement")
+                  child: const Text("Enregistrement")
               ),
 
             ],
@@ -230,12 +229,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
 
           children: <Widget>[
-            MyBackGroundPage(),
+            const MyBackGroundPage(),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height *0.55,
                     child: PageView(
                       onPageChanged: (number){
@@ -270,14 +269,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget bodyPage(){
     return Column(
       children: [
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         MyAnimationWidget(
           duree: 1,
           child: TextField(
             controller:email,
             decoration: InputDecoration(
               hintText: "Entrer votre mail",
-              prefixIcon: Icon(Icons.mail),
+              prefixIcon: const Icon(Icons.mail),
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(
@@ -286,7 +285,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         MyAnimationWidget(
           duree: 2,
           child: TextField(
@@ -295,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: const Icon(Icons.lock),
                 suffixIcon: IconButton(
                   onPressed: (){
                     setState(() {
@@ -303,7 +302,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
 
                 },
-                  icon: Icon(Icons.remove_red_eye),
+                  icon: const Icon(Icons.remove_red_eye),
                 ),
                 hintText: "Entrer votre mot de passe",
                 border: OutlineInputBorder(
@@ -313,7 +312,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           ),
         ),
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         MyAnimationWidget(
           duree: 3,
           child: ElevatedButton(
@@ -325,7 +324,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return MyDashBoard();
+                      return const MyDashBoard();
                     }
                   ));
                 })
@@ -333,17 +332,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   popUpError();
                 });
               },
-              child: Text("Connexion")
+              child: const Text("Connexion")
           ),
         ),
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         MyAnimationWidget(
           duree: 4,
           child: TextButton(
               onPressed: (){
                 ScaffoldMessenger.of(context).showSnackBar(barAction());
               },
-              child: Text("Inscription")
+              child: const Text("Inscription")
           ),
         )
       ],

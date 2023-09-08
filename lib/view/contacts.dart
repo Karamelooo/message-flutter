@@ -24,10 +24,10 @@ class _ContactsState extends State<Contacts> {
   
     return StreamBuilder<QuerySnapshot>(
 
-      stream: FirebaseHelper().cloud_users.where(FieldPath.documentId, whereIn: myFavoris).snapshots(),
+      stream: FirebaseHelper().cloudUsers.where(FieldPath.documentId, whereIn: myFavoris).snapshots(),
       builder: (context,snap){
         if(snap.data == null){
-          return Center(child: Text("Aucun utilisateur"),);
+          return const Center(child: Text("Aucun utilisateur"),);
         }
         else {
           List documents = snap.data!.docs;

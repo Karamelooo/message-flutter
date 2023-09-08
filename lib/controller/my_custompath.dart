@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 class MyCustomPath extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {
-    // TODO: implement getClip
     Path path = Path();
     path.lineTo(0, size.height * 0.3);
     path.cubicTo(size.width * 0.3, size.height * 0.25, size.width * 0.66, size.height *0.4, size.width, size.height *0.3);
@@ -15,7 +14,6 @@ class MyCustomPath extends CustomClipper<Path>{
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
     return true;
   }
 

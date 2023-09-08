@@ -2,13 +2,10 @@ import 'dart:typed_data';
 
 import 'package:firstbd233/view/contacts.dart';
 import 'package:firstbd233/view/liste_personne.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firstbd233/constante/constant.dart';
 import 'package:firstbd233/controller/firebase_helper.dart';
 import 'package:firstbd233/view/my_background.dart';
-import 'package:firstbd233/constante/constant.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:firstbd233/view/my_carte.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,7 +30,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title:Text("Souhaitez-vous envoyer cette image ?"),
+            title:const Text("Souhaitez-vous envoyer cette image ?"),
             content:Image.memory(bytesFile!),
             actions: [
               TextButton(
@@ -42,7 +39,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                   bytesFile = null;
                   Navigator.pop(context);
                 },
-                child: Text("Annuler")
+                child: const Text("Annuler")
               ),
               TextButton(
                 onPressed: () {
@@ -58,7 +55,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                     Navigator.pop(context);
                   });
                 },
-                child: Text("Enregistrer")
+                child: const Text("Enregistrer")
               ),
             ],
           );
@@ -84,7 +81,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
         width: MediaQuery.of(context).size.width * 0.6,
         child:Column(
           children: [
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             GestureDetector(
               onTap: () {
                 pickFile();
@@ -94,7 +91,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                 backgroundImage: NetworkImage(moi.avatar!),
               ),
             ),
-            Divider(
+            const Divider(
               thickness:1,
               color: Colors.black
             ),
@@ -116,7 +113,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Personnes"
@@ -133,7 +130,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
       ),
       body: Stack(
         children: [
-          MyBackGroundPage(),
+          const MyBackGroundPage(),
           bodyPage()
         ],
       )
@@ -141,10 +138,10 @@ class _MyDashBoardState extends State<MyDashBoard> {
   }
   Widget bodyPage() {
     switch(indexPage) {
-      case 0 : return ListPersonne(show:"all");
-      case 1 : return ListPersonne(show:"fav");
-      case 2 : return Contacts(); // TODO: chat
-      default: return Text("Erreur");
+      case 0 : return const ListPersonne(show:"all");
+      case 1 : return const ListPersonne(show:"fav");
+      case 2 : return const Contacts();
+      default: return const Text("Erreur");
     }
   }
 }

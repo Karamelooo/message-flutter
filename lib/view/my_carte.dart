@@ -18,13 +18,13 @@ class _MyCarteState extends State<MyCarte> {
       future: PermissionGPS().init(),
       builder: (context, resultat) {
           if(resultat.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator.adaptive()
             );
           }
         else {
           if(resultat.data == null) {
-            return Center(
+            return const Center(
               child: Text("Vous n'avez pas accès à la carte"),
             );
           }

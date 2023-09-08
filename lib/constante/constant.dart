@@ -1,5 +1,4 @@
 import 'package:firstbd233/model/my_user.dart';
-import 'package:flutter/material.dart';
 
 enum Genre{homme,femme,transgenre,autres}
 MyUser moi = MyUser();

@@ -39,7 +39,7 @@ class MyUser {
   }
 
     String get fullName {
-    return "${prenom} ${nom}";
+    return "$prenom $nom";
   }
 
 }

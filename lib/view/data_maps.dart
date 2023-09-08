@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import 'package:firstbd233/controller/permission_gps.dart';
 import "package:geolocator/geolocator.dart";
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MyDataMaps extends StatefulWidget {
-  Position coordonnee;
-  MyDataMaps({required this.coordonnee,super.key});
+  final Position coordonnee;
+  const MyDataMaps({required this.coordonnee,super.key});
 
   @override
   State<MyDataMaps> createState() => _MyDataMapsState();
@@ -18,7 +17,7 @@ class _MyDataMapsState extends State<MyDataMaps> {
   Completer<GoogleMapController> completer = Completer();
   late CameraPosition camera;
     Set<Marker> markers = {
-      Marker(
+      const Marker(
         markerId: MarkerId("kfsdlf"),
         position: LatLng(48.85341, 2.34444)
         )
@@ -26,10 +25,10 @@ class _MyDataMapsState extends State<MyDataMaps> {
 
   @override
   void initState() {
-    // TODO: implement initState
     camera = CameraPosition(target: LatLng(widget.coordonnee.latitude, widget.coordonnee.longitude), zoom: 14);
     super.initState();
   }
+  @override
   Widget build(BuildContext context) {
     return GoogleMap(
       markers: markers,

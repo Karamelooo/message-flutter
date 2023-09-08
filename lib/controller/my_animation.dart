@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class MyAnimationWidget extends StatefulWidget {
-  Widget child;
-  int duree;
-  MyAnimationWidget({required this.child,required this.duree,super.key});
+  final Widget child;
+  final int duree;
+  const MyAnimationWidget({required this.child,required this.duree,super.key});
 
   @override
   State<MyAnimationWidget> createState() => _MyAnimationWidgetState();
@@ -20,12 +20,12 @@ class _MyAnimationWidgetState extends State<MyAnimationWidget> with SingleTicker
     super.initState();
     _controller = AnimationController(
         vsync: this,
-      duration: Duration(milliseconds: 5500)
+      duration: const Duration(milliseconds: 5500)
     );
     CurvedAnimation animationCurved = CurvedAnimation(parent: _controller, curve: Curves.bounceInOut);
 
     animationOffset = Tween<Offset>(
-      begin: Offset(0, 5),
+      begin: const Offset(0, 5),
       end: Offset.zero,
     ).animate(animationCurved);
 

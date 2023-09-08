@@ -36,7 +36,7 @@ class _ListPersonneState extends State<ListPersonne> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Retour")
+                child: const Text("Retour")
               ),
             ],
           );
@@ -52,7 +52,7 @@ class _ListPersonneState extends State<ListPersonne> {
         builder: (context) {
           if(moi.favoris.contains(userToAdd.uid)) {
             return AlertDialog(
-            title:Text("Retirer un favori"),
+            title:const Text("Retirer un favori"),
             content:
                 Text("Souhaitez-vous retirer ${userToAdd.fullName} de vos favoris ?"),
             actions: [
@@ -60,7 +60,7 @@ class _ListPersonneState extends State<ListPersonne> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Non")
+                child: const Text("Non")
               ),
               TextButton(
                 onPressed: () {
@@ -68,14 +68,14 @@ class _ListPersonneState extends State<ListPersonne> {
                   FirebaseHelper().updateUser(moi.uid, {'favoris':newFavorite});
                   Navigator.pop(context);
                 },
-                child: Text("Oui")
+                child: const Text("Oui")
               ),
             ],
           );
           }
           else {
           return AlertDialog(
-            title:Text("Ajouter un favori"),
+            title:const Text("Ajouter un favori"),
             content:
                 Text("Souhaitez-vous ajouter ${userToAdd.fullName} à vos favoris ?"),
             actions: [
@@ -83,7 +83,7 @@ class _ListPersonneState extends State<ListPersonne> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Non")
+                child: const Text("Non")
               ),
               TextButton(
                 onPressed: () {
@@ -91,7 +91,7 @@ class _ListPersonneState extends State<ListPersonne> {
                   FirebaseHelper().updateUser(moi.uid, {'favoris':newFavorite});
                   Navigator.pop(context);
                 },
-                child: Text("Oui")
+                child: const Text("Oui")
               ),
             ],
           );
@@ -101,11 +101,10 @@ class _ListPersonneState extends State<ListPersonne> {
     }
 
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseHelper().cloud_users.snapshots(),
+        stream: FirebaseHelper().cloudUsers.snapshots(),
         builder: (context,snap){
-          print(snap.data!.docs.length);
           if(snap.data == null){
-            return Center(child: Text("Aucun utilisateur"),);
+            return const Center(child: Text("Aucun utilisateur"),);
           }else {
             List documents = snap.data!.docs;
             return ListView.builder(
@@ -137,7 +136,7 @@ class _ListPersonneState extends State<ListPersonne> {
                     );
                   }
                   else {
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   }
                 }
             );

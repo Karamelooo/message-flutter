@@ -1,15 +1,13 @@
-import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firstbd233/model/my_message.dart';
 import 'package:firstbd233/model/my_user.dart';
 
 class FirebaseHelper {
   final auth = FirebaseAuth.instance;
-  final cloud_users = FirebaseFirestore.instance.collection("UTILISATEURS");
+  final cloudUsers = FirebaseFirestore.instance.collection("UTILISATEURS");
   final cloudMessages = FirebaseFirestore.instance.collection("messages");
   final storage = FirebaseStorage.instance;
 
@@ -28,7 +26,7 @@ class FirebaseHelper {
 }
 
 Future<MyUser> getUser(String uid) async {
-  DocumentSnapshot snapshot = await cloud_users.doc(uid).get();
+  DocumentSnapshot snapshot = await cloudUsers.doc(uid).get();
   return MyUser.bdd(snapshot);
 }
 
@@ -41,7 +39,7 @@ Future<List<DocumentSnapshot>> getMessages() async {
 }
   //ajouter un utilisateur dans la base de donnée
   addUser(String uid,Map<String,dynamic>data ){
-    cloud_users.doc(uid).set(data);
+    cloudUsers.doc(uid).set(data);
   }
   
   //me connecter
@@ -54,7 +52,7 @@ Future<List<DocumentSnapshot>> getMessages() async {
   //mise à jour d'un utilisateur
 
   updateUser(String uid, Map<String,dynamic> map) {
-    cloud_users.doc(uid).update(map);
+    cloudUsers.doc(uid).update(map);
   }
 
   // stocker un fichier
@@ -64,9 +62,6 @@ Future<List<DocumentSnapshot>> getMessages() async {
     return url;
   }
     Future sendMsg(String message, String sid, String rid) async {
-      print(message);
-      print(sid);
-      print(rid);
     Map<String,dynamic> data = {
       "message":message,
       "sid":sid,

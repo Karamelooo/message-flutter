@@ -16,7 +16,7 @@ class _MyBackGroundPageState extends State<MyBackGroundPage> {
       clipper: MyCustomPath(),
       child: Container(
         //color: Colors.purple,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage("http://www.letribunaldunet.fr/wp-content/uploads/2020/02/voiture-de-luxe.jpg"),
             fit: BoxFit.fill

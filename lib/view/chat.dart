@@ -3,7 +3,6 @@ import 'package:firstbd233/constante/constant.dart';
 import 'package:firstbd233/controller/firebase_helper.dart';
 import 'package:firstbd233/model/my_user.dart';
 import 'package:flutter/material.dart'; 
-import 'package:provider/provider.dart'; 
 
 class ChatApp extends StatefulWidget {
   final MyUser correspondant;
@@ -45,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
 class ChatMessage extends StatefulWidget {
   final dynamic message;
   final MyUser correspondant;
-  ChatMessage({required this.message, required this.correspondant, super.key}); 
+  const ChatMessage({required this.message, required this.correspondant, super.key}); 
   @override
   State<ChatMessage> createState() => _ChatMessageState();
 }
@@ -53,8 +52,6 @@ class ChatMessage extends StatefulWidget {
 class _ChatMessageState extends State<ChatMessage> {
   @override
   Widget build(BuildContext context) {
-    List persons = [moi.uid, widget.correspondant.uid];
-    //print(widget.message.data()['message']);
     final AlignmentGeometry alignment =
         (widget.message.data()['sid'] == moi.uid) ? Alignment.centerRight : Alignment.centerLeft;
     final Color messageColor =  (widget.message.data()['sid'] == moi.uid) ? Colors.green : Colors.white;
@@ -62,7 +59,7 @@ class _ChatMessageState extends State<ChatMessage> {
       (widget.message.data()['sid'] == widget.correspondant.uid || widget.message.data()['sid'] == moi.uid) &&
       (widget.message.data()['rid'] == widget.correspondant.uid || widget.message.data()['rid'] == moi.uid)) {
       return Container(
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -70,12 +67,12 @@ class _ChatMessageState extends State<ChatMessage> {
               alignment: alignment,
               child: Text(
                 (widget.message.data()['sid'] == moi.uid) ? moi.fullName : widget.correspondant.fullName,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Container(
               alignment: alignment,
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 color: messageColor,
                 borderRadius: BorderRadius.circular(10.0),
@@ -87,7 +84,7 @@ class _ChatMessageState extends State<ChatMessage> {
       );
     }
     else {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
   }
 }
@@ -141,9 +138,9 @@ class ChatScreenContent extends StatefulWidget {
               },
             ),
           ),
-          Divider(),
+          const Divider(),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: _buildTextComposer(context),
           ),
         ],
@@ -152,28 +149,28 @@ class ChatScreenContent extends StatefulWidget {
   }
 
   Widget _buildTextComposer(BuildContext context) {
-    final TextEditingController _textController = TextEditingController();
+    final TextEditingController textController = TextEditingController();
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: <Widget>[
           Expanded(
             child: TextField(
-              controller: _textController,
+              controller: textController,
               textInputAction: TextInputAction.send,
               onSubmitted: (text) {
                 _handleSubmitted(context, text);
               },
-              decoration: InputDecoration.collapsed(
+              decoration: const InputDecoration.collapsed(
                 hintText: 'Envoyer un message',
               ),
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: () {
-              _handleSubmitted(context, _textController.text);
+              _handleSubmitted(context, textController.text);
             },
           ),
         ],
