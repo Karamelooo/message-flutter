@@ -5,13 +5,10 @@ import 'package:firstbd233/view/liste_personne.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firstbd233/constante/constant.dart';
 import 'package:firstbd233/controller/firebase_helper.dart';
-import 'package:firstbd233/controller/paiement_controller.dart';
-import 'package:firstbd233/view/machine_learning.dart';
 import 'package:firstbd233/view/my_background.dart';
 import 'package:firstbd233/constante/constant.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firstbd233/view/my_carte.dart';
-import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 

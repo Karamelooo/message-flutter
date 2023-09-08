@@ -32,7 +32,7 @@ Future<MyUser> getUser(String uid) async {
   return MyUser.bdd(snapshot);
 }
 
-Future<List<DocumentSnapshot>> getMessages(List<dynamic> persons) async {
+Future<List<DocumentSnapshot>> getMessages() async {
   QuerySnapshot querySnapshot = await FirebaseHelper()
       .cloudMessages
       .orderBy('date', descending: true)

@@ -294,14 +294,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.16"
-  flutter_stripe:
-    dependency: "direct main"
-    description:
-      name: flutter_stripe
-      sha256: "8ec182c1f14d34dd68d499c8d015d89773aa3d8d149a24c838ff6e5d51e2dd82"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.4.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -312,14 +304,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -368,14 +352,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
-  get:
-    dependency: "direct main"
-    description:
-      name: get
-      sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.6.5"
   google_maps:
     dependency: transitive
     description:
@@ -424,126 +400,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.4+2"
-  google_ml_kit:
-    dependency: "direct main"
-    description:
-      name: google_ml_kit
-      sha256: "9d98ed5ff96c1295d08f96c807a70d53b56a43a7a18ae86d4ea4d09cf7310fc9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.16.2"
-  google_mlkit_barcode_scanning:
-    dependency: transitive
-    description:
-      name: google_mlkit_barcode_scanning
-      sha256: "033401bc992315fe3d6ed9265b97bf1e620fa12ddaffda830107d6852abcde77"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0"
-  google_mlkit_commons:
-    dependency: transitive
-    description:
-      name: google_mlkit_commons
-      sha256: "42173a8ba89f386486cc5b8249e84da4a4b861daa70498373627d985eb418689"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.0"
-  google_mlkit_digital_ink_recognition:
-    dependency: transitive
-    description:
-      name: google_mlkit_digital_ink_recognition
-      sha256: f48a90cd2bb8dc6a0432a1ba89a1a488d4e7ba3132fe4dfd75a9eab0e0a1b90a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0"
-  google_mlkit_entity_extraction:
-    dependency: transitive
-    description:
-      name: google_mlkit_entity_extraction
-      sha256: e4801253f9913a84793f338fb45923825fc2799f8608a1f0d0f5ca43b5062fbc
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.10.0"
-  google_mlkit_face_detection:
-    dependency: transitive
-    description:
-      name: google_mlkit_face_detection
-      sha256: "567339c67530b22b22917622df9bba40547a4719fa108819901f95ffb7cd3399"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
-  google_mlkit_face_mesh_detection:
-    dependency: transitive
-    description:
-      name: google_mlkit_face_mesh_detection
-      sha256: "3f64635fe096fef3167da6f69a30b1744ddfb4590acdaa2b7757c6f30455b0f5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
-  google_mlkit_image_labeling:
-    dependency: transitive
-    description:
-      name: google_mlkit_image_labeling
-      sha256: "38c7225e22ec558bfd78015ef9e9ae4812cee8715f03a9c82b87d3e0b530d00c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0"
-  google_mlkit_language_id:
-    dependency: transitive
-    description:
-      name: google_mlkit_language_id
-      sha256: cb4241297552f22be638be620add294b6a6c9043eefc1f4c18597ee66ce31a98
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
-  google_mlkit_object_detection:
-    dependency: transitive
-    description:
-      name: google_mlkit_object_detection
-      sha256: "52b11c335cbf45da561127de586e1ab32ba5526eb04d7a3a683c787279a47153"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.10.0"
-  google_mlkit_pose_detection:
-    dependency: transitive
-    description:
-      name: google_mlkit_pose_detection
-      sha256: "08759fc095751cf84f6758f276212881388e04210c64087341e260f9f233316e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0"
-  google_mlkit_selfie_segmentation:
-    dependency: transitive
-    description:
-      name: google_mlkit_selfie_segmentation
-      sha256: "5b2931f86e9476daaf5710f9e0d281ec06f7d0ee664a3688b791bfcfb7c4afd5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.0"
-  google_mlkit_smart_reply:
-    dependency: transitive
-    description:
-      name: google_mlkit_smart_reply
-      sha256: "97165ea8667aa94de20d782862ecd791daf0e884c48b8cb1cedd9ebafda5d52c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
-  google_mlkit_text_recognition:
-    dependency: transitive
-    description:
-      name: google_mlkit_text_recognition
-      sha256: "588021c99536fdfb173eeecc4ee1b60ea4e0bd4be9787f52363c85346ae20364"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.10.0"
-  google_mlkit_translation:
-    dependency: transitive
-    description:
-      name: google_mlkit_translation
-      sha256: "175a0cb801b5fa01140f62344bbda6a8dcbb7977ae057f1dab1b74eddc60d71c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
   html:
     dependency: transitive
     description:
@@ -553,7 +409,7 @@ packages:
     source: hosted
     version: "0.15.4"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
@@ -797,30 +653,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  stripe_android:
-    dependency: transitive
-    description:
-      name: stripe_android
-      sha256: "188858dab6cc38c2924457766e365980d80fe807109730bc2928f2376870c619"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.4.0"
-  stripe_ios:
-    dependency: transitive
-    description:
-      name: stripe_ios
-      sha256: ddcf87cacf3a6fa482568d099332bae69326acfab51a726af9faa31a8ef30af8
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.4.1"
-  stripe_platform_interface:
-    dependency: transitive
-    description:
-      name: stripe_platform_interface
-      sha256: c09591fdb8d200812fdcb6262b71b357f8e9a618a8830897953c95eb6ea4897c
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.4.0"
   term_glyph:
     dependency: transitive
     description:

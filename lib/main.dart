@@ -11,16 +11,13 @@ import 'package:firstbd233/view/my_background.dart';
 import 'package:firstbd233/view/my_dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:lottie/lottie.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-    Stripe.publishableKey = "pk_test_51GQ8hTDVXOXIy9UxpbYscBnuiq9FTW63gCk5agdRp2JOjym1NvC03WVaEBdj6wwFkJzAeCit9ZA77sBTeQHaI9rI00fsdMSCog";
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Stripe.instance.applySettings();
   PermissionPhoto().init();
   runApp(const MyApp());
 }

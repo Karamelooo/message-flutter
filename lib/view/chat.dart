@@ -52,7 +52,7 @@ class _ChatMessageState extends State<ChatMessage> {
   @override
   Widget build(BuildContext context) {
     List persons = [moi.uid, widget.correspondant.uid];
-    print(widget.message);
+    print(widget.message.data()['message']);
     final AlignmentGeometry alignment =
         (widget.message.data()['sid'] == moi.uid) ? Alignment.centerRight : Alignment.centerLeft;
     final Color messageColor =  (widget.message.data()['sid'] == moi.uid) ? Colors.green : Colors.white;
@@ -107,9 +107,10 @@ class ChatScreenContent extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     getMyMessages() async {
-      List persons = [moi.uid];
-      List<DocumentSnapshot> myMessages = await FirebaseHelper().getMessages(persons);
+      List persons = [moi.uid, widget.correspondant.uid];
+      List<DocumentSnapshot> myMessages = await FirebaseHelper().getMessages();
       //print(myMessages[1]['message']);
+      print(myMessages.length);
       return myMessages;
     }
     final chatModel = getMyMessages();

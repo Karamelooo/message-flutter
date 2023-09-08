@@ -103,6 +103,7 @@ class _ListPersonneState extends State<ListPersonne> {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseHelper().cloud_users.snapshots(),
         builder: (context,snap){
+          print(snap.data!.docs.length);
           if(snap.data == null){
             return Center(child: Text("Aucun utilisateur"),);
           }else {
