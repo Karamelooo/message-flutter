@@ -40,7 +40,6 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-
 class ChatMessage extends StatefulWidget {
   final dynamic message;
   final MyUser correspondant;
