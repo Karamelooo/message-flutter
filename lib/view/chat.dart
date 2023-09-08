@@ -52,7 +52,7 @@ class _ChatMessageState extends State<ChatMessage> {
   @override
   Widget build(BuildContext context) {
     List persons = [moi.uid, widget.correspondant.uid];
-    print(widget.message.data()['message']);
+    //print(widget.message.data()['message']);
     final AlignmentGeometry alignment =
         (widget.message.data()['sid'] == moi.uid) ? Alignment.centerRight : Alignment.centerLeft;
     final Color messageColor =  (widget.message.data()['sid'] == moi.uid) ? Colors.green : Colors.white;
@@ -101,28 +101,30 @@ class ChatScreenContent extends StatefulWidget {
 }
 
   class _ChatScreenContentState extends State<ChatScreenContent> {
-  final TextEditingController _textController = TextEditingController();
     List<DocumentSnapshot> mesMess = [];
-    bool cond = false;
+    int count = 0;
   @override
   Widget build(BuildContext context) {
     getMyMessages() async {
-      List persons = [moi.uid, widget.correspondant.uid];
       List<DocumentSnapshot> myMessages = await FirebaseHelper().getMessages();
       //print(myMessages[1]['message']);
-      print(myMessages.length);
+      //print(myMessages.length);
       return myMessages;
     }
+    print(count);
     final chatModel = getMyMessages();
-    if(cond == false) {
-      print('test');
+    if(true) {
+      //print('test');
     chatModel.then((value) {
       //print(value[0]['message']);
-      setState(() {
+      if(count < value.length) {
+        
+        setState(() {
 
-      mesMess = value;
-      });
-      cond = true;
+        mesMess = value;
+        count = value.length;
+        });
+      }
     })
     .catchError((error) {
       
@@ -199,6 +201,9 @@ class ChatScreenContent extends StatefulWidget {
               FirebaseHelper().sendMsg(text, moi.uid, widget.correspondant.uid)
               .then((value) {
                 print('envoye');
+                setState(() {
+                  
+                });
               })
               .catchError((onError) {
                 print('erreur');
